@@ -13,6 +13,11 @@ function getRepoContributors(repoOwner, repoName, cb) {
     }
   };
 
+  if (!process.argv[2] || !process.argv[3]) {
+    console.log("Please input a valid repo owner and name");
+    return
+  };
+
   request(options, function(err, res, body) {
     cb(err, JSON.parse(body));
 
